@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prodauction</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="mt-[6rem]">
+    <main>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= render partial: 'layouts/header' %>
+      <div class="w-[90%] lg:w-[1000px] xl:w-[1300px] m-auto">
+        <%= yield %>
+      </div>
+      <%= render partial: 'layouts/footer' %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>tool-box</title>
+  <g style="isolation:isolate">
+    <g id="Layer_1" data-name="Layer 1">
+      <polygon points="134.5 63.63 134.5 173.06 155.59 173.06 155.59 83.3 356.41 83.3 356.41 173.06 377.5 173.06 377.5 63.63 134.5 63.63" fill="#fff100"/>
+      <g style="mix-blend-mode:multiply">
+      <polygon points="356.41 76.52 148.81 76.52 148.81 166.28 134.5 166.28 134.5 173.06 155.59 173.06 155.59 83.3 356.41 83.3 356.41 76.52" fill="#603FEF"/>
+      <polygon points="370.72 63.63 370.72 166.28 356.41 166.28 356.41 173.06 377.5 173.06 377.5 63.63 370.72 63.63" fill="#603FEF"/>
+    </g>
+    <polygon points="469.05 112.69 42.95 112.69 0 217.8 512 217.8 469.05 112.69" fill="#603FEF"/>
+    <rect y="217.8" width="512" height="230.57" fill="#603FEF"/>
+    <polygon points="469.05 112.69 42.95 112.69 0 217.8 512 217.8 469.05 112.69" fill="#ec1c25"/>
+    <rect y="217.8" width="512" height="230.57" fill="#603FEF"/>
+    <rect x="239.61" y="184.69" width="32.78" height="66.22" rx="6.78" ry="6.78" fill="#603FEF"/>
+    <polygon points="0 448.37 482.62 214.41 458.88 112.69 469.05 112.69 511.05 215.47 511.05 448.37 0 448.37" fill="#603FEF" style="mix-blend-mode:multiply"/>
+    </g>
+  </g>
+</svg>
