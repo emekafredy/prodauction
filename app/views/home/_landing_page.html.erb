@@ -1,0 +1,62 @@
+<div class="flex flex-col md:flex-row justify-center items-center gap-4">
+  <div class="w-[100%] md:w-[30%] text-center md:text-left pt-24 md:pt-0">
+    <h1 class="text-[1.7rem] md:text-[1.9rem] lg:text-[2.3rem] font-bold leading-[4rem] tracking-widest uppercase"> Auction Sales </h1>
+    <ul>
+      <li class="text-[1rem] lg:text-[1.4rem]">Want to get the best possible deals as a bidder?</li>
+      <li class="text-[1rem] lg:text-[1.4rem]">Put up products for auction?</li>
+    </ul>
+    <p class="text-[1rem] lg:text-[1.4rem] mb-8">You can do both here</p>
+    <%= link_to "Start Now",
+        new_user_registration_path,
+        :class => "mt-12 text-md text-white-100 hover:text-white-100 font-bold transition-all duration-300 bg-purple-300 py-4 px-12 rounded hover:bg-purple-200" %>
+  </div>
+
+  <div class="w-[100%] md:w-[70%] text-center">
+    <%= image_tag('discount.webp') %>
+    <a class="text-xs text-purple-100 hover:underline" href="https://www.freepik.com/free-vector" target="_blank">
+      Image by vectorjuice on Freepik</a>
+  </div>
+</div>
+
+<div class="my-24">
+  <h1 class="text-[1.7rem] md:text-[1.9rem] lg:text-[2.3rem] font-bold leading-[4rem] tracking-widest mb-8"> Features Summary </h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="bg-white-200 p-8 rounded-lg">
+      <%= image_tag('register.svg', :class => "w-[20%] m-auto mb-12") %>
+      <p class="text-[1rem] mb-4">Get registered on the platform without much requirements and start buying/selling.</p>
+
+      <%= link_to "Create account",
+          new_user_registration_path,
+          :class => "mt-12 text-md text-purple-300 font-bold transition-all duration-300 hover:underline" %>
+    </div>
+
+    <div class="bg-white-200 p-8 rounded">
+      <%= image_tag('buy.svg', :class => "w-[20%] m-auto mb-12") %>
+      <p class="text-[1rem] mb-4">View products up for auction in your location and make bids. The highest after timeout gets it</p>
+
+      <%= link_to "Get started here",
+          new_user_registration_path,
+          :class => "mt-12 text-md text-purple-300 font-bold transition-all duration-300 hover:underline" %>
+    </div>
+
+    <div class="bg-white-200 p-8 rounded">
+      <%= image_tag('sell.svg', :class => "w-[20%] m-auto mb-12") %>
+      <p class="text-[1rem] mb-4">Add products you would like to sell on auction with a starting price.
+        If product gets approved, it's up for sale at the selected time and users get to bid. Highest bidder gets it too.</p>
+
+      <%= link_to "Login",
+          new_user_session_path,
+          :class => "mt-12 text-md text-purple-300 font-bold transition-all duration-300 hover:underline" %>
+    </div>
+
+    <div class="bg-white-200 p-8 rounded">
+      <%= image_tag('wallet.svg', :class => "w-[20%] m-auto mb-12") %>
+      <p class="text-[1rem] mb-4">Top up your wallet to be able to make bids. Withdraw at any time when you need to.</p>
+
+      <%= link_to "Get started here",
+          new_user_registration_path,
+          :class => "mt-12 text-md text-purple-300 font-bold transition-all duration-300 hover:underline" %>
+    </div>
+  </div>
+</div>

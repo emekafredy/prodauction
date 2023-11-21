@@ -12,3 +12,7 @@ Style/Documentation:
   Enabled: false
 Layout/LineLength:
   Max: 180
+Metrics/MethodLength:
+  Max: 15
+Lint/EmptyBlock:
+  Enabled: false

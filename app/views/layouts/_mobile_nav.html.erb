@@ -1,0 +1,108 @@
+<nav
+    data-home-target='menu'
+    class="md:hidden fixed top-0 -right-24 z-[1100] h-screen w-[400px]
+    bg-gradient-to-r from-purple-300 via-purple-100 to-purple-500 p-8 translate-x-full duration-500"
+  >
+    <button data-action='click->home#hideMobileMenu'>
+      <%= image_tag('close.svg', :class => "h-6 cursor-pointer") %>
+    </button>
+
+    <% if current_user %>
+      <div class="block flex items-center justify-left gap-4 my-16">
+        <%= user_avatar(current_user) %>
+        <span class="text-md text-white-100 font-bold transition-all duration-300 ml-2">
+          Hi, <%= current_user.firstname %>
+        </span>
+      </div>
+    <% else %>
+      <ul class="my-16">
+        <li class="block flex items-center justify-left gap-4 mb-6">
+          <%= image_tag('signup.svg', :class => "h-6 cursor-pointer") %>
+          <%= link_to "Login", new_user_session_path, :class => "text-md text-white-100 hover:text-white-200 font-bold" %>
+        </li>
+
+        <li class="block flex items-center justify-left gap-4">
+          <%= image_tag('login.svg', :class => "h-6 cursor-pointer") %>
+          <%= link_to "Sign Up", new_user_registration_path, :class => "text-md text-white-100 hover:text-white-200 font-bold" %>
+        </li>
+      </ul>
+    <% end %>
+
+    <ul>
+      <li class="block flex items-center justify-left gap-4 mb-4">
+        <%= image_tag('menu.svg', :class => "h-6 cursor-pointer") %>
+        <a
+          href="/"
+          class="text-md lg:text-lg text-white-100 font-bold"
+        >
+          View Listings
+        </a>
+      </li>
+
+      <% if current_user %>
+        <li class="block flex items-center justify-left gap-4 mb-4">
+          <%= image_tag('menu.svg', :class => "h-6 cursor-pointer") %>
+          <a
+            href="/"
+            class="text-md lg:text-lg text-white-100 font-bold"
+          >
+            My Listings
+          </a>
+        </li>
+
+        <li class="block flex items-center justify-left gap-4 mb-4">
+          <%= image_tag('menu.svg', :class => "h-6 cursor-pointer") %>
+          <a
+            href="/"
+            class="text-md lg:text-lg text-white-100 font-bold"
+          >
+            My Bids
+          </a>
+        </li>
+
+        <li class="block flex items-center justify-left gap-4">
+          <%= image_tag('menu.svg', :class => "h-6 cursor-pointer") %>
+          <a
+            href="/"
+            class="text-md lg:text-lg text-white-100 font-bold"
+          >
+            New Listing
+          </a>
+        </li>
+      <% end%>
+    </ul>
+
+    <% if current_user %>
+      <ul class="fixed bottom-24">
+        <li class="block flex items-center justify-left gap-4 mb-4">
+          <%= image_tag('settings.svg', :class => "h-6 cursor-pointer") %>
+          <a
+            href="/"
+            class="text-md lg:text-lg text-white-100 font-bold"
+          >
+            Settings
+          </a>
+        </li>
+
+        <% if current_user.admin? %>
+          <li class="block flex items-center justify-left gap-4 mb-4">
+            <%= image_tag('admin.svg', :class => "h-6 cursor-pointer") %>
+            <a
+              href="/"
+              class="text-md lg:text-lg text-white-100 font-bold"
+            >
+              Admin
+            </a>
+          </li>
+        <% end %>
+
+        <li class="block flex items-center justify-left gap-4 mb-4">
+          <%= image_tag('menu.svg', :class => "h-6 cursor-pointer") %>
+          <%= link_to "Sign Out",
+              destroy_user_session_path,
+              'data-turbo-method': :delete,
+              :class => "text-md lg:text-lg text-white-100 font-bold" %>
+        </li>
+      </ul>
+    <% end %>
+  </nav>

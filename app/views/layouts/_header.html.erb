@@ -1,38 +1,76 @@
 <header
   data-controller="home"
-  class="h-[6rem] fixed top-0 z-[1000] transition-all duration-300 w-full
+  class="h-[5rem] fixed top-0 z-[1000] transition-all duration-300 w-full
         bg-gradient-to-r from-purple-300 via-purple-100 to-purple-500"
 >
   <nav
-    class="w-[90%] lg:w-[1000px] xl:w-[1300px] m-auto flex justify-between items-center py-8"
+    class="w-[90%] lg:w-[1000px] xl:w-[1300px] m-auto flex justify-between items-center py-6"
   >
-    <a
-      to="/"
-      class="font-bold text-lg md:text-2xl text-white-100 tracking-widest font-manrope cursor-pointer hover:underline"
-    >
-      ProdAuction
-    </a>
+    <%= link_to "ProdAuction", root_path, :class => "font-bold text-lg md:text-2xl text-white-100 tracking-widest font-manrope cursor-pointer hover:underline" %>
 
     <ul>
-      <li class="hidden md:inline">
+      <li class="hidden md:inline md:mx-2 lg:mx-4">
         <a
           href="/"
-          class="text-sm md:text-md text-blue-100 hover:text-purple-100 font-bold
-            transition-all duration-500 bg-white-200 py-2 px-8 rounded hover:bg-white-200"
+          class="text-md lg:text-lg text-white-100 hover:text-white-200 font-bold
+            transition-all duration-300 hover:underline"
         >
-          Login
+          View Listings
         </a>
       </li>
 
-      <li class="hidden md:inline">
-        <a
-          href="/hhh"
-          class="ml-2 lg:ml-3 xl:ml-8 text-sm md:text-md text-white-100 hover:text-white-200 font-bold
-            transition-all duration-500 hover:underline"
+      <% if current_user %>
+        <li class="hidden md:inline md:mx-2 lg:mx-4">
+          <a
+            href="/"
+            class="text-md lg:text-lg text-white-100 hover:text-white-200 font-bold
+              transition-all duration-300 hover:underline"
+          >
+            Create Listing
+          </a>
+        </li>
+      <% end %>
+
+      <% if current_user && current_user.admin? %>
+        <li class="hidden md:inline md:mx-2 lg:mx-4">
+          <a
+            href="/hhh"
+            class="text-md lg:text-lg text-white-100 hover:text-white-200 font-bold
+              transition-all duration-300 hover:underline"
+          >
+            Admin
+          </a>
+        </li>
+      <% end %>
+    </ul>
+
+    <ul>
+      <% if current_user %>
+        <div
+          data-action='click->home#toggleDropdownMenu'
+          class="hidden md:flex items-center justify-left gap-2
+            hover:bg-purple-200 px-6 rounded-md cursor-pointer hover:opacity-[0.85] transition-all duration-300"
         >
-          Sign Up
-        </a>
-      </li>
+          <span class="text-md text-white-100 font-bold transition-all duration-300 ml-2">
+            Hi, <%= current_user.firstname %>
+          </span>
+          <div class="p-2 bg-purple-200 rounded-full">
+            <%= user_avatar(current_user) %>
+          </div>
+        </div>
+      <% else %>
+        <li class="hidden md:inline">
+          <%= link_to "Login",
+            new_user_session_path,
+            :class => "text-sm md:text-md text-blue-100 hover:text-purple-100 font-bold transition-all duration-300 bg-white-200 py-2 px-8 rounded hover:bg-white-200" %>
+        </li>
+
+        <li class="hidden md:inline">
+          <%= link_to "Sign Up",
+            new_user_registration_path,
+            :class => "ml-2 lg:ml-3 xl:ml-8 text-sm md:text-md text-white-100 hover:text-white-200 font-bold transition-all duration-300 hover:underline" %>
+        </li>
+      <% end %>
 
       <li data-action='click->home#showMobileMenu' class="inline md:hidden">
         <%= image_tag('hamburger.svg', :class => "h-6 cursor-pointer") %>
@@ -40,37 +78,6 @@
     </ul>
   </nav>
 
-  <nav
-    data-home-target='menu'
-    class="md:hidden fixed top-0 -right-24 z-[1100] h-screen w-[400px]
-    bg-gradient-to-r from-purple-300 via-purple-100 to-purple-500 p-8 translate-x-full duration-700"
-  >
-    <button data-action='click->home#hideMobileMenu'>
-      <%= image_tag('close.svg', :class => "h-6 cursor-pointer") %>
-    </button>
-
-    <ul class="my-12">
-      <li class="block flex items-center justify-left gap-4 mb-6">
-        <%= image_tag('signup.svg', :class => "h-6 cursor-pointer") %>
-        <a
-          href="/hhh"
-          class="text-md text-white-100 hover:text-white-200 font-bold
-            transition-all duration-500 hover:underline"
-        >
-          Login
-        </a>
-      </li>
-
-      <li class="block flex items-center justify-left gap-4">
-        <%= image_tag('login.svg', :class => "h-6 cursor-pointer") %>
-        <a
-          href="/hhh"
-          class="text-md text-white-100 hover:text-white-200 font-bold
-            transition-all duration-500 hover:underline"
-        >
-          Sign Up
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <%= render partial: 'layouts/dropdown_menu' %>
+  <%= render partial: 'layouts/mobile_nav' %>
 </header>

@@ -1,0 +1,63 @@
+<div
+  data-home-target='dropdown'
+  class="hidden md:block fixed inset-x-0 z-[100] -translate-y-[60rem] duration-500"
+>
+  <div class="relative w-[90%] lg:w-[1000px] xl:w-[1300px] m-auto">
+    <div
+      class="mt-8 w-[250px] bg-white-100 rounded-md shadow-lg p-8 float-right"
+    >
+      <ul>
+        <li class="block flex items-center justify-left gap-4 mb-4">
+          <%= image_tag('menu.svg', :class => "h-6 cursor-pointer") %>
+          <a
+            href="/"
+            class="text-md lg:text-lg text-purple-300 hover:underline
+              transition-all duration-300"
+          >
+            My Listings
+          </a>
+        </li>
+
+        <li class="block flex items-center justify-left gap-4 mb-4">
+          <%= image_tag('menu.svg', :class => "h-6 cursor-pointer") %>
+          <a
+            href="/"
+            class="text-md lg:text-lg text-purple-300 hover:underline
+              transition-all duration-300"
+          >
+            My Bids
+          </a>
+        </li>
+        <li class="block flex items-center justify-left gap-4 mb-4">
+          <%= image_tag('menu.svg', :class => "h-6 cursor-pointer") %>
+          <a
+            href="/"
+            class="text-md lg:text-lg text-purple-300 hover:underline
+              transition-all duration-300"
+          >
+            New Listing
+          </a>
+        </li>
+
+        <li class="block flex items-center justify-left gap-4 mb-16">
+          <%= image_tag('settings-purple.svg', :class => "h-6 cursor-pointer") %>
+          <a
+            href="/"
+            class="text-md lg:text-lg text-purple-300 hover:underline
+              transition-all duration-300"
+          >
+            Settings
+          </a>
+        </li>
+
+        <li class="block flex items-center justify-left gap-4">
+          <%= image_tag('menu.svg', :class => "h-6 cursor-pointer") %>
+          <%= link_to "Sign Out",
+              destroy_user_session_path,
+              'data-turbo-method': :delete,
+              :class => "text-md lg:text-lg text-purple-300 hover:underline transition-all duration-300" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
