@@ -1,43 +1,50 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="h-screen mb-48">
+  <div class="my-48 w-[95%] md:w-[650px] lg:w-[800px] m-auto px-0 sm:px-6 py-12 md:p-12 rounded bg-white-100 md:shadow-md">
+    <h2 class="font-bold text-2xl mb-8">Update <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class="my-12 w-[100%]">
+        <%= f.label :avatar %><br />
+        <%= image_tag('sell.svg', :class => "w-[30%] m-auto cursor-pointer") %>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <div class="mb-8 w-[100%]">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autocomplete: "email", disabled: true, class: "text-black opacity-50 w-[100%] rounded h-12" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
+        <div class="w-[100%]">
+          <%= f.label :firstname %><br />
+          <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname", class: "w-[100%] rounded h-12" %>
+        </div>
+
+        <div class="w-[100%]">
+          <%= f.label :lastname %><br />
+          <%= f.text_field :lastname, autocomplete: "lastname", class: "w-[100%] rounded h-12" %>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
+        <div class="w-[100%]">
+          <%= f.label :username %><br />
+          <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "w-[100%] rounded h-12" %>
+        </div>
+
+        <div class="w-[100%]">
+          <%= f.label :phone %><br />
+          <%= f.text_field :phone, autocomplete: "phone", class: "w-[100%] rounded h-12" %>
+        </div>
+      </div>
+
+      <div class="w-[100%] md:w-[70%] text-center md:text-left">
+        <%= f.submit "Update",
+            class: "bg-purple-300 py-3 px-16 md:px-24 text-white-100 hover:bg-purple-200 transition-all duration-300 cursor-pointer rounded" %>
+      </div>
     <% end %>
+
+    <%= link_to "Back", :back %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</div>

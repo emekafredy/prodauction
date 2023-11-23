@@ -2,6 +2,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - "db/schema.rb"
+    - "db/migrate/*.rb"
     - "bin/*"
     - "config/puma.rb"
     - "config/environments/development.rb"
@@ -13,6 +14,8 @@ Style/Documentation:
 Layout/LineLength:
   Max: 180
 Metrics/MethodLength:
-  Max: 15
+  Max: 20
 Lint/EmptyBlock:
   Enabled: false
+Metrics/AbcSize:
+  Max: 20

@@ -8,12 +8,12 @@
 
       <div class="w-[100%] mb-6">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-[100%] rounded" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-[100%] rounded h-12" %>
       </div>
 
       <div class="w-[100%] mb-6">
         <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "current-password", class: "w-[100%] rounded" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "w-[100%] rounded h-12" %>
       </div>
 
       <% if devise_mapping.rememberable? %>

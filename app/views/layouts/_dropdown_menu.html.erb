@@ -11,8 +11,7 @@
           <%= image_tag('menu.svg', :class => "h-6 cursor-pointer") %>
           <a
             href="/"
-            class="text-md lg:text-lg text-purple-300 hover:underline
-              transition-all duration-300"
+            class="text-md lg:text-lg text-purple-300 hover:underline transition-all duration-300"
           >
             My Listings
           </a>
@@ -22,8 +21,7 @@
           <%= image_tag('menu.svg', :class => "h-6 cursor-pointer") %>
           <a
             href="/"
-            class="text-md lg:text-lg text-purple-300 hover:underline
-              transition-all duration-300"
+            class="text-md lg:text-lg text-purple-300 hover:underline transition-all duration-300"
           >
             My Bids
           </a>
@@ -32,8 +30,7 @@
           <%= image_tag('menu.svg', :class => "h-6 cursor-pointer") %>
           <a
             href="/"
-            class="text-md lg:text-lg text-purple-300 hover:underline
-              transition-all duration-300"
+            class="text-md lg:text-lg text-purple-300 hover:underline transition-all duration-300"
           >
             New Listing
           </a>
@@ -41,13 +38,9 @@
 
         <li class="block flex items-center justify-left gap-4 mb-16">
           <%= image_tag('settings-purple.svg', :class => "h-6 cursor-pointer") %>
-          <a
-            href="/"
-            class="text-md lg:text-lg text-purple-300 hover:underline
-              transition-all duration-300"
-          >
-            Settings
-          </a>
+          <%= link_to "Settings",
+              edit_user_registration_path,
+              :class => "text-md lg:text-lg text-purple-300 hover:underline transition-all duration-300" %>
         </li>
 
         <li class="block flex items-center justify-left gap-4">

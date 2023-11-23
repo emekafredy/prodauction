@@ -49,6 +49,9 @@ module.exports = {
         200: "#ED2939",
         300: "#C21807",
       },
+      gray: {
+        100: "#F3F3F3",
+      },
     },
     extend: {
       fontFamily: {

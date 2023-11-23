@@ -5,4 +5,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root 'home#index'
+
+  resources :items, only: %i[index new create show update destroy]
 end
