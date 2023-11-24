@@ -1,0 +1,65 @@
+<div class="pt-2 pb-60">
+  <div class="flex items-center justify-center py-8 bg-white-200 mb-16 rounded-md">
+    <h1 class="font-bold text-xl"> <%= @item.name %> </h1>
+  </div>
+
+  <div class="mb-12">
+    <% if editable(@item) %>
+      <%= link_to "Edit item", edit_item_path(@item),
+        class: "text-purple-300 hover:text-purple-200 hover:underline transition-all duration-300" %> |
+    <% end %>
+  
+    <%= link_to "Back to items", items_path,
+      class: "text-blue-100 hover:text-blue-100 hover:underline transition-all duration-300" %>
+  </div>
+
+  <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+    <%= render 'items/carousel', item: @item %>
+
+    <div class="w-[100%] md:w-[50%] px-12">
+      <p class="text-sm md:text-md font-regular text-black-100 opacity-50 mb-6">
+        <%= @item.description %>
+      </p>
+
+      <div class="mb-2">
+        <p class="text-md md:text-md font-bold text-green-100"> <%= @item.status %> </p> </p>
+      </div>
+
+      <hr class="my-4"/>
+
+      <div class="flex gap-2 items-center justify-between mb-4">
+          <span class="text-sm text-black-100"> Bid from: </span>
+          <p class="text-sm md:text-md text-purple-200 font-bold"> NGN<%= @item.starting_price %> </p>
+      </div>
+
+      <div class="flex gap-2 items-center justify-between mb-4">
+        <span class="text-sm text-black-100"> Latest Bid at: </span>
+        <p class="text-sm md:text-md text-purple-200 font-bold"> NGN<%= @item.starting_price %> </p>
+      </div>
+
+      <hr class="my-4"/>
+
+      <div class="flex gap-2 items-center justify-between mb-4">
+        <span class="text-sm text-black-100"> Bid starts at: </span>
+        <p class="text-sm md:text-md text-purple-200 font-bold"> <%= formatted_date(@item.bid_start_time) %> </p>
+      </div>
+
+      <div class="flex gap-2 items-center justify-between mb-4">
+        <span class="text-sm text-black-100"> Bid ends at: </span>
+        <p class="text-sm md:text-md text-purple-200 font-bold"> <%= formatted_date(@item.bid_end_time) %> </p>
+      </div>
+
+      <hr class="my-4"/>
+
+      <div class="flex gap-2 items-center justify-between mb-4">
+        <span class="text-sm text-black-100"> Delivery Options: </span>
+        <p class="text-sm md:text-md text-purple-200 font-bold"> <%= @item.delivery_options %> </p>
+      </div>
+
+      <% if item_bidable(@item) %>
+        <%= button_tag "Make a Bid",
+          class: "mt-8 text-md text-white-100 hover:text-white-100 font-bold transition-all duration-300 bg-purple-300 py-2 px-6 rounded hover:bg-purple-200" %><br />
+      <% end %>
+    </div>
+  </div>
+</div>

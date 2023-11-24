@@ -30,6 +30,6 @@ class User < ApplicationRecord
   end
 
   def avatar_as_thumbnail
-    avatar.variant(resize_to_limit: [300, 300]).processed
+    avatar&.variant(resize_to_limit: [600, 300])&.processed
   end
 end

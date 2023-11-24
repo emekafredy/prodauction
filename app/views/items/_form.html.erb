@@ -1,1 +1,84 @@
-<%= 'The Form' %>
+<div class="w-[95%] md:w-[650px] lg:w-[800px] m-auto px-0 sm:px-6 py-12 md:p-12 rounded bg-white-100 md:shadow-md">
+  <%= form_with(model: item) do |form| %>
+    <% if item.errors.any? %>
+      <div style="color: red">
+        <h2>Sorry! <%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+        <ul>
+          <% item.errors.each do |error| %>
+            <li class="text-sm list-disc"><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
+      <div class="w-[100%]">
+        <%= form.label :name, style: "display: block; opacity: 0.8; font-size: 0.95rem" %>
+        <%= form.text_field :name, autofocus: true, autocomplete: "firstname", class: "w-[100%] rounded h-12 border-gray-200" %>
+      </div>
+
+      <div class="w-[100%]">
+        <%= form.label "Select category", style: "opacity: 0.8; font-size: 0.95rem" %><br/>
+        <%= form.select :category_id,
+          options_for_select(Category.all.map { |c| [c.name, c.id] }, Category.all.map { |c| [c.name, c.id] }[0]),
+          {}, {required: 'true', class: 'w-[100%] rounded h-12 border-gray-200'} %>
+      </div>
+    </div>
+
+    <div class="w-[100%] mb-8">
+      <%= form.label "Describe product and specs", style: "display: block; opacity: 0.8; font-size: 0.95rem" %>
+      <%= form.text_area :description, :rows => 5, class: "w-[100%] rounded border-gray-200" %>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
+      <div class="w-[100%]">
+        <%= form.label :bid_start_time, style: "display: block; opacity: 0.8; font-size: 0.95rem" %>
+        <%= form.datetime_field :bid_start_time, class: "w-[100%] rounded border-gray-200" %>
+      </div>
+
+      <div class="w-[100%]">
+        <%= form.label :bid_end_time, style: "display: block; opacity: 0.8; font-size: 0.95rem" %>
+        <%= form.datetime_field :bid_end_time, class: "w-[100%] rounded border-gray-200" %>
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
+      <div class="w-[100%]">
+        <%= form.label :starting_price, style: "display: block; opacity: 0.8; font-size: 0.95rem" %>
+        <%= form.text_field :starting_price, class: "w-[100%] rounded border-gray-200" %>
+      </div>
+
+      <div class="w-[100%]">
+        <%= form.label "Item location(state)", style: "opacity: 0.8; font-size: 0.95rem" %><br/>
+        <%= form.select :state,
+          options_for_select(country_states, country_states[0]),
+          {}, {required: 'true', class: 'w-[100%] rounded h-12 border-gray-200'} %>
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
+      <% if @mode == 'New' %>
+        <div class="w-[100%]">
+          <%= form.label :attach_pictures, style: "display: block; opacity: 0.8; font-size: 0.95rem" %>
+          <%= form.file_field :pictures, multiple: true, 
+              class: "block text-sm text-black-200 border py-[0.70rem] pl-2
+                border-gray-100 rounded cursor-pointer bg-gray-100 h-[3rem] focus:outline-none" %>
+        </div>
+      <% end %>
+
+      <div class="w-[100%]">
+        <%= form.label :delivery_options, style: "display: block; opacity: 0.8; font-size: 0.95rem" %>
+        <% ['Pickup', 'Home Delivery'].each do |option| %>
+          <%= form.check_box :delivery_options, { multiple: true }, option, nil %>
+          <%= option %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="w-[100%] md:w-[70%] text-center md:text-left mt-6">
+      <%= form.submit "Save Changes",
+          class: "bg-purple-300 py-3 px-16 md:px-24 text-white-100 hover:bg-purple-200 transition-all duration-300 cursor-pointer rounded" %>
+    </div>
+  <% end %>
+</div>

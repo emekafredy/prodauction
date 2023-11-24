@@ -51,6 +51,7 @@ module.exports = {
       },
       gray: {
         100: "#F3F3F3",
+        200: "#CFCFCF",
       },
     },
     extend: {
@@ -60,6 +61,16 @@ module.exports = {
         manrope: ["Manrope", "sans-serif"],
         nunito: ["Nunito Sans", "sans-serif"],
         merriweather: ["Merriweather", "sans-serif"],
+      },
+      lineHeight: {
+        19: "19px",
+        24: "24px",
+        25: "25px",
+        33: "33px",
+        36: "36px",
+        38: "38px",
+        44: "44px",
+        58: "58px",
       },
     },
   },

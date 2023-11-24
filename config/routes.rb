@@ -7,5 +7,5 @@ Rails.application.routes.draw do
 
   get 'search', to: 'search#search'
   root 'home#index'
-  resources :items, only: %i[index new create show update destroy]
+  resources :items, only: %i[index new create show edit update destroy]
 end

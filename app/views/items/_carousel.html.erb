@@ -1,0 +1,16 @@
+<div data-controller="items" class="w-[100%] md:w-[50%]">
+
+  <% @item.pictures.each_with_index do |item, i| %>
+    <div data-items-target="image" class="<%= i > 0 ? "hidden" : "" %>">
+      <%= link_to image_tag(item,
+        :class => "cursor-pointer mb-6 rounded-md"), item %>
+    </div>
+  <% end %>
+
+  <% if @item.pictures&.count > 1 %>
+    <div class="flex items-center justify-between">
+      <button data-action="click->items#showPreviousImage" type="button" class="text-purple-300 hover:text-purple-200 font-bold underline">prev</button>
+      <button data-action="click->items#showNextImage" type="button" class="text-purple-300 hover:text-purple-200 font-bold underline">next</button>
+    </div>
+  <% end %>
+</div>

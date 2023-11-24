@@ -7,46 +7,60 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.create(
-  firstname: 'John',
-  lastname: 'Doe',
-  email: 'john@doe.com',
-  username: 'johny_doe',
-  password: ENV.fetch('USER_PASSWORD', nil),
-  phone: '1234679321'
-)
+# Seed User to own items to be seeded
+# User.create(
+#   firstname: 'John',
+#   lastname: 'Doe',
+#   email: 'john@doe.com',
+#   username: 'johny_doe',
+#   password: ENV.fetch('USER_PASSWORD', nil),
+#   phone: '1234679321'
+# )
 
-%w[Furnitue Electronics Fashion Art Tools Utensils Sports].map do |c|
-  Category.create!(name: c)
-end
+# # Create categories for items to be seeded
+# %w[Furniture Electronics Fashion Art Tools Utensils Sports].map do |c|
+#   Category.create!(name: c)
+# end
 
 def get_category(name)
   Category.find_by(name:)
 end
 
+# Method to create Items
 def create_items_for_category(category)
-  4.times do |_i|
-    Item.create!(
+  2.times do |_i|
+    Item.new(
       user: User.find_by(email: 'john@doe.com'),
       category: get_category(category),
       name: Faker::Commerce.product_name,
       description: Faker::Lorem.sentence,
-      # image: Faker::LoremFlickr.image,
-      # pictures: [
-      #   Faker::LoremFlickr.image,
-      #   Faker::LoremFlickr.image,
-      #   Faker::LoremFlickr.image
-      # ],
       status: 2,
       starting_price: Faker::Commerce.price,
       bid_start_time: Faker::Time.between_dates(from: Date.today + 1, to: Date.today + 3),
       bid_end_time: Faker::Time.between_dates(from: Date.today + 4, to: Date.today + 5),
       state: %w[Lagos Imo Kaduna Akwa-Ibom Kogi Enugu Plateau].sample,
       country: 'Nigeria'
-    )
+    ).save(validate: false)
   end
 end
 
-%w[Furnitue Electronics Fashion Art Tools Utensils Sports].map do |c|
+# Create a pair of items for each seeded category
+%w[Furniture Electronics Fashion Art Tools Utensils Sports].map do |c|
   create_items_for_category(c)
+end
+
+# Attache Images to each Seeded Item
+Item.all.each do |item|
+  puts "Attaching pictures for #{item.name}..."
+  item.pictures.attach(
+    io: File.open(Rails.root.join('public', 'images', "#{item.category.name}1.jpg")),
+    filename: "#{item.category.name}1.jpg",
+    content_type: 'image/jpg'
+  )
+  item.pictures.attach(
+    io: File.open(Rails.root.join('public', 'images', "#{item.category.name}2.jpg")),
+    filename: "#{item.category.name}2.jpg",
+    content_type: 'image/jpg'
+  )
+  puts 'Done'
 end
