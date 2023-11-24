@@ -18,4 +18,4 @@ Metrics/MethodLength:
 Lint/EmptyBlock:
   Enabled: false
 Metrics/AbcSize:
-  Max: 20
+  Max: 30

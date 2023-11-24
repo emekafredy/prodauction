@@ -16,9 +16,10 @@ module Users
     # end
 
     # GET /resource/edit
-    # def edit
-    #   super
-    # end
+    def edit
+      @avatar = current_user
+      super
+    end
 
     # PUT /resource
     # def update

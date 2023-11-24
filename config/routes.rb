@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-  root 'home#index'
 
+  get 'search', to: 'search#search'
+  root 'home#index'
   resources :items, only: %i[index new create show update destroy]
 end

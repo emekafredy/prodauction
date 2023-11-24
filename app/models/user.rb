@@ -28,4 +28,8 @@ class User < ApplicationRecord
     # allet.create_new_customer
     puts 'Creating new customer'
   end
+
+  def avatar_as_thumbnail
+    avatar.variant(resize_to_limit: [300, 300]).processed
+  end
 end

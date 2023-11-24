@@ -1,0 +1,26 @@
+<% @items.each do |item| %>
+  <div class="bg-white-100 shadow-md rounded-md">
+    <%= image_tag('https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D',
+        :class => "cursor-pointer mb-6 rounded-t-md") %>
+
+    <div class="pb-12 px-4">
+      <p class="font-bold text-purple-300 mb-4"> <%= item.name %> </p>
+
+      <div class="flex items-center justify-between mt-8 mb-4">
+        <span class="text-xs text-black-100"> Bid starts from: </span>
+        <p class="text-sm font-bold"> NGN<%= item.starting_price %> </p>
+      </div>
+
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-xs text-black-100"> Bid starts at: </span>
+        <p class="text-sm font-bold"> <%= formatted_date(item.bid_start_time) %> </p>
+      </div>
+
+      <div class="text-center mt-12">
+        <%= link_to "View Details",
+          item_path(item.id),
+          :class => "mt-12 text-lg text-purple-300 hover:text-purple-200 font-bold transition-all duration-300 underline" %>
+      </div>
+    </div>
+  </div>
+<% end %>

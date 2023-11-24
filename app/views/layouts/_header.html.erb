@@ -10,24 +10,16 @@
 
     <ul>
       <li class="hidden md:inline md:mx-2 lg:mx-4">
-        <a
-          href="/"
-          class="text-md lg:text-lg text-white-100 hover:text-white-200 font-bold
-            transition-all duration-300 hover:underline"
-        >
-          View Listings
-        </a>
+        <%= link_to "View Listings",
+            items_path,
+            :class => "text-md lg:text-lg text-white-100 hover:text-white-200 font-bold transition-all duration-300 hover:underline" %>
       </li>
 
       <% if current_user %>
         <li class="hidden md:inline md:mx-2 lg:mx-4">
-          <a
-            href="/"
-            class="text-md lg:text-lg text-white-100 hover:text-white-200 font-bold
-              transition-all duration-300 hover:underline"
-          >
-            Create Listing
-          </a>
+          <%= link_to "New Listing",
+            items_path,
+            :class => "text-md lg:text-lg text-white-100 hover:text-white-200 font-bold transition-all duration-300 hover:underline" %>
         </li>
       <% end %>
 

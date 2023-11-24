@@ -9,7 +9,9 @@
 
     <% if current_user %>
       <div class="block flex items-center justify-left gap-4 my-16">
-        <%= user_avatar(current_user) %>
+        <div class="p-2 bg-purple-200 rounded-full">
+          <%= user_avatar(current_user) %>   
+        </div>
         <span class="text-md text-white-100 font-bold transition-all duration-300 ml-2">
           Hi, <%= current_user.firstname %>
         </span>
@@ -31,12 +33,9 @@
     <ul>
       <li class="block flex items-center justify-left gap-4 mb-4">
         <%= image_tag('menu.svg', :class => "h-6 cursor-pointer") %>
-        <a
-          href="/"
-          class="text-md lg:text-lg text-white-100 font-bold"
-        >
-          View Listings
-        </a>
+        <%= link_to "View Listings",
+            items_path,
+            :class => "text-md lg:text-lg text-white-100 font-bold" %>
       </li>
 
       <% if current_user %>
@@ -62,12 +61,9 @@
 
         <li class="block flex items-center justify-left gap-4">
           <%= image_tag('menu.svg', :class => "h-6 cursor-pointer") %>
-          <a
-            href="/"
-            class="text-md lg:text-lg text-white-100 font-bold"
-          >
-            New Listing
-          </a>
+          <%= link_to "New Listing",
+            items_path,
+            :class => "text-md lg:text-lg text-white-100 font-bold" %>
         </li>
       <% end%>
     </ul>

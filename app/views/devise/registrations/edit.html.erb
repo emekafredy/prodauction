@@ -6,8 +6,10 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="my-12 w-[100%]">
-        <%= f.label :avatar %><br />
-        <%= image_tag('sell.svg', :class => "w-[30%] m-auto cursor-pointer") %>
+        <%= link_to image_tag(@user.avatar_as_thumbnail, :class => "m-auto border border-purple-300 cursor-pointer mb-6"), @user.avatar %>
+        <%= f.file_field :avatar,
+          class: "block w-[250px] m-auto text-sm text-black-200 border py-[0.70rem] pl-2
+            border-gray-100 rounded cursor-pointer bg-gray-100 h-[3rem] focus:outline-none" %>
       </div>
 
       <div class="mb-8 w-[100%]">
