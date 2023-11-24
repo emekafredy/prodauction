@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: %i[show index]
+  before_action :authenticate_user!, except: %i[show index my_listings]
   before_action :set_item, only: %i[show edit update destroy]
 
   def index
-    @items = Item.where('bid_end_time > ?', DateTime.now)
+    @items = Item.available
+                 .where('bid_end_time > ?', DateTime.now)
   end
 
   def new
@@ -54,6 +55,12 @@ class ItemsController < ApplicationController
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def my_listings
+    @items = Item
+             .where(user_id: current_user.id)
+             .where('bid_end_time > ?', DateTime.now)
   end
 
   private

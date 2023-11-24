@@ -41,12 +41,9 @@
       <% if current_user %>
         <li class="block flex items-center justify-left gap-4 mb-4">
           <%= image_tag('menu.svg', :class => "h-6 cursor-pointer") %>
-          <a
-            href="/"
-            class="text-md lg:text-lg text-white-100 font-bold"
-          >
-            My Listings
-          </a>
+          <%= link_to "My Listings",
+              items_my_listings_path,
+              :class => "text-md lg:text-lg text-white-100 font-bold" %>
         </li>
 
         <li class="block flex items-center justify-left gap-4 mb-4">

@@ -7,10 +7,12 @@ class SearchController < ApplicationController
 
     @items = if category_id
                Item.search(search_params,
-                           fields: %w[name description category_id],
-                           where: { category_id: })
+                           fields: %w[name description category_id status],
+                           where: { category_id:, status: %w[published in_bid] })
              else
-               Item.search(search_params, fields: %w[name description])
+               Item.search(search_params, 
+                           fields: %w[name description status],
+                           where: { category_id:, status: %w[published in_bid] })
              end
 
     render turbo_stream:

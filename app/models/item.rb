@@ -14,6 +14,8 @@ class Item < ApplicationRecord
   validates :starting_price, numericality: { greater_than: 0 }
   validate :date_config
 
+  scope :available, -> { where(status: %w[published in_bid]) }
+
   enum status: %w[draft in_review published in_bid closed sold]
 
   def thumbnail

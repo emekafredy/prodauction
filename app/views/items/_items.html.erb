@@ -1,30 +1,36 @@
-<% @items.each do |item| %>
-  <div class="bg-white-100 shadow-md rounded-md">
-    <%= link_to image_tag(item.thumbnail,
-        :class => "cursor-pointer mb-6 rounded-t-md h-72 w-[100%]"), item.thumbnail if item.thumbnail %>
+<% if @items.count > 0 %>
+  <% @items.each do |item| %>
+    <div class="bg-white-100 shadow-md rounded-md">
+      <%= link_to image_tag(item.thumbnail,
+          :class => "cursor-pointer mb-6 rounded-t-md h-72 w-[100%]"), item.thumbnail if item.thumbnail %>
 
-    <div class="pb-12 px-4">
-      <p class="font-bold text-black-200 mb-4 text-lg"> <%= item.name %> </p>
+      <div class="pb-12 px-4">
+        <p class="font-bold text-black-200 mb-4 text-lg"> <%= item.name %> </p>
 
-      <div class="flex items-center justify-between mt-8 mb-4">
-        <span class="text-xs text-black-100"> Bid starts from: </span>
-        <p class="text-sm font-bold"> NGN<%= item.starting_price %> </p>
-      </div>
+        <div class="flex items-center justify-between mt-8 mb-4">
+          <span class="text-xs text-black-100"> Bid starts from: </span>
+          <p class="text-sm font-bold"> NGN<%= item.starting_price %> </p>
+        </div>
 
-      <div class="flex items-center justify-between mb-4">
-        <span class="text-xs text-black-100"> Bid starts at: </span>
-        <p class="text-sm font-bold"> <%= formatted_date(item.bid_start_time) %> </p>
-      </div>
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs text-black-100"> Bid starts at: </span>
+          <p class="text-sm font-bold"> <%= formatted_date(item.bid_start_time) %> </p>
+        </div>
 
-      <div class="flex items-center justify-between mb-4">
-        <span class="text-xs text-black-100"> Bid ends at: </span>
-        <p class="text-sm font-bold"> <%= formatted_date(item.bid_end_time) %> </p>
-      </div>
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs text-black-100"> Bid ends at: </span>
+          <p class="text-sm font-bold"> <%= formatted_date(item.bid_end_time) %> </p>
+        </div>
 
-      <div class="text-center mt-12">
-        <%= link_to "View Details", item,
-          :class => "mt-12 text-lg text-purple-300 hover:text-purple-200 font-bold transition-all duration-300 underline" %>
+        <div class="text-center mt-12">
+          <%= link_to "View Details", item,
+            :class => "mt-12 text-lg text-purple-300 hover:text-purple-200 font-bold transition-all duration-300 underline" %>
+        </div>
       </div>
     </div>
+  <% end %>
+<% else %>
+  <div class="py-48 flex items-center justify-center">
+    No Active Listings Available
   </div>
 <% end %>

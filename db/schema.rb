@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_003104) do
     t.uuid "address_id"
     t.string "name", null: false
     t.text "description"
-    t.integer "status", default: 0, null: false
+    t.integer "status", default: 1, null: false
     t.decimal "starting_price", precision: 16, scale: 2, default: "0.0"
     t.decimal "price_sold", precision: 16, scale: 2
     t.integer "rating"

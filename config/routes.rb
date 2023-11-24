@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   get 'search', to: 'search#search'
   root 'home#index'
+  get 'items/my-listings', to: 'items#my_listings'
   resources :items, only: %i[index new create show edit update destroy]
 end

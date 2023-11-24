@@ -1,0 +1,30 @@
+<div class="pt-2 pb-60">
+  <div class="flex items-center justify-center py-8 bg-white-200 mb-24 rounded-md">
+    <h1 class="font-bold text-xl"> My Listings </h1>
+  </div>
+
+  <%= form_with url: search_path, method: :get do |form| %>
+    <div class="flex flex-col md:flex-row items-center justify-between sm:w-[80%] md:w-[700px] lg:w-[100%] m-auto">
+      <div class="w-[100%] md:w-auto">
+        <%= form.label :search %><br/>
+        <%= form.text_field :search, class: "rounded-md w-[100%] md:w-auto" %>
+      </div>
+
+      <div class="flex flex-row items-start justify-start md:justify-between gap-2 w-[100%] md:w-auto mt-4 md:mt-0">
+        <div class="md:w-auto">
+          <%= form.label :category %><br/>
+          <%= form.select :category,
+            options_for_select(Category.all.map { |c| [c.name, c.id] }.insert(0, nil))%>
+        </div>
+        <div class="md:w-auto">
+          <%= submit_tag "Filter",
+            class: "bg-purple-300 py-2 px-8 sm:px-12 text-white-100 hover:bg-purple-200 transition-all duration-300 cursor-pointer rounded mt-6" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div id="items" class="sm:w-[80%] md:w-[700px] lg:w-[100%] m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
+    <%= render 'items/items', items: @items %>
+  </div>
+</div>

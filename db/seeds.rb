@@ -8,19 +8,19 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # Seed User to own items to be seeded
-# User.create(
-#   firstname: 'John',
-#   lastname: 'Doe',
-#   email: 'john@doe.com',
-#   username: 'johny_doe',
-#   password: ENV.fetch('USER_PASSWORD', nil),
-#   phone: '1234679321'
-# )
+User.create(
+  firstname: 'John',
+  lastname: 'Doe',
+  email: 'john@doe.com',
+  username: 'johny_doe',
+  password: ENV.fetch('USER_PASSWORD', nil),
+  phone: '1234679321'
+)
 
-# # Create categories for items to be seeded
-# %w[Furniture Electronics Fashion Art Tools Utensils Sports].map do |c|
-#   Category.create!(name: c)
-# end
+# Create categories for items to be seeded
+%w[Furniture Electronics Fashion Art Tools Utensils Sports].map do |c|
+  Category.create!(name: c)
+end
 
 def get_category(name)
   Category.find_by(name:)

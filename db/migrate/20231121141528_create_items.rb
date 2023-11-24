@@ -8,7 +8,7 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.references :address, type: :uuid, foreign_key: true
       t.string :name, null: false
       t.text :description
-      t.integer :status, default: 0, null: false
+      t.integer :status, default: 1, null: false
       t.decimal :starting_price, precision: 16, scale: 2, default: 0.00
       t.decimal :price_sold, precision: 16, scale: 2
       t.integer :rating
